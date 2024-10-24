@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Glazovskiy</title>
+  <link rel="shortcut icon" href="../media/images/newsicon1.png">
+  <link rel="stylesheet" type="text/css" href="../../../media/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../../media/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../../media/css/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../media/css/slick-theme.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+
+<body class="f-space">
+  <div id="cr-widget-marquee"
+    data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+    data-theme="light"
+    data-show-symbol="true"
+    data-show-icon="true"
+    data-show-period-change="true"
+    data-period-change="3M"
+    data-api-url="https://api.cryptorank.io/v0">
+    <a href="https://cryptorank.io">Coins by Cryptorank</a>
+    <script src="https://cryptorank.io/widget/marquee.js"></script>
+ </div>
+ {% include 'nav.html' %}
+
+  <div class="container">
+    <h3 class="fw-bold p-3"> <a class="text-decoration-none" href="{% url 'news_list' %}"><Назад</a> / {{ podCategory.name }}</h3>
+    <div class="row g-0">
+      <div class="col">
+        <div class="row g-0 justify-content-between">
+          {% for post in posts %}
+            <div class="col-md-3 p-3 mb-2">
+                <img class="rounded mb-1 w-100" src="{{ post.post_img.url }}" alt="" width="310" height="200">
+              <p class="mb-1 p-1" style="font-size: 14px;">
+
+                <a class="text-decoration-none" href="{% url 'podCategory_for_posts' post.category.category.slug %}">{{ post.category.category.name }}</a> &nbsp;
+                <span class="text-danger">
+                  <a class="text-decoration-none text-danger" href="{% url 'category_for_posts' post.category.slug %}">{{ post.category.name }}</a>
+                </span>
+              </p>
+              <p class="fw-bold p-1"><a class="text-dark text-decoration-none" href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></p>
+              <p class="m-0 text-secondary p-1" style="font-size: 13px;">
+                <i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+                <span class="text-secondary"> 2 mins</span> 
+                &nbsp; <span class="text-secondary">| {{ post.published|timesince }}</span> 
+                &nbsp; &nbsp;<p class="text-secondary" style="font-size: 12px;">{{ post.published }}</p>
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="row g-0">
+            <div class="col">
+              <p class="text-center py-3">
+              <span><a class="btn btn-link bg-primary text-white text-decoration-none mx-2" href="">Предыдущая</a></span>
+              1 из 1
+              <span><a class="btn btn-link bg-primary text-white text-decoration-none mx-2" href="">Следующая</a></span>
+            </p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% include 'footer.html' %}
+
+  <script src="../media/js/bootstrap.bundle.js"></script>
+  <script src="../media/js/jquery-3.7.1.min.js"></script>
+  <script src="../media/js/slick.min.js"></script>
+  <script src="../media/js/test.js"></script>
+  <script>
+    console.log('123')
+
+  </script>
+
+
+</body>
+</html>

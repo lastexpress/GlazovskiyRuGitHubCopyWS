@@ -1,0 +1,445 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../media/images/newsicon1.png">
+	<link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+<body class="f-space">
+
+	<div id="cr-widget-marquee"
+  data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  data-theme="light"
+  data-show-symbol="true"
+  data-show-icon="true"
+  data-show-period-change="true"
+  data-period-change="3M"
+  data-api-url="https://api.cryptorank.io/v0">
+  <a href="https://cryptorank.io">Coins by Cryptorank</a>
+  <script src="https://cryptorank.io/widget/marquee.js"></script>
+ </div>
+
+ {% include 'nav.html' %}
+
+
+	<div class="container-lg py-3">
+		<div class="row g-0 mb-3">
+			<div class="col-md-12">
+				<div class="row g-0 justify-content-between">
+					<div class="col-md-5 mb-3">
+    		<div class="images relative" style="position: relative;">
+        <a href="{% url 'post_detail' latest_post.slug %}">
+        	<img class="d-block img-fluid" src="{{ latest_post.post_img.url }}" alt="" width="550" height="500">
+        </a>
+        <div class="position-absolute w-100" style="
+        	bottom: 0;
+    			left: 0;
+    			background-color: #C9FD35;
+    			color: white;
+    			padding: 10px;
+    			box-shadow: 8px 5px 1px black;">
+         <h3 class="text-dark fw-bold">
+         	<a class="text-dark text-decoration-none" href="{% url 'post_detail' latest_post.slug %}">{{ latest_post.title|truncatewords:10 }}</a>
+         </h3>
+         <p class="title-last-card-info m-0 text-secondary">
+         	<i class="fa-regular fa-clock text-dark" style="font-size: 13px;"></i>
+         	<span class="text-secondary"> 2 mins</span>
+         	&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">{{ latest_post.published|timesince }} назад</span>
+         	&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ latest_post.published }}</span>
+         </p>
+        </div>
+    		</div>
+					</div>
+					<div class="col-md-3 mb-3 p-2">
+						<ul class="list-unstyled">
+							{% for five_post in posts_for_main %}
+							<li class="mb-3 border-bottom">
+								<a class="text-decoration-none text-dark fw-bold" href="{% url 'post_detail' five_post.slug %}" style="font-size: 18px;">{{ five_post.title }}</a>
+								<p class="my-1" style="font-size: 13px;">
+									<i class="fa-regular fa-clock" style="font-size: 13px;"></i>
+									<span class="text-secondary"> 2 mins</span>
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">{{ five_post.published|timesince }} назад</span>
+								</p>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="col-md-3 px-3">
+						<ul class="list-unstyled border bg-dark p-2 rounded">
+							<h3 class="text-white p-2 fw-bold">Популярное</h3>
+							{% for pop_post in popular_posts %}
+							<li class="mb-3 mx-2 p-2 border-bottom">
+								<a class="text-decoration-none text-white" href="{% url 'category_for_posts' pop_post.slug %}" style="font-size: 14px;">{{ pop_post.title }}</a>
+								<p class="m-0" style="font-size: 13px;">
+									<i class="fa-regular fa-clock text-white" style="font-size: 13px;"></i>
+									<span class="text-secondary"> 2 mins</span> 
+									&nbsp; <span class="text-secondary">{{ pop_post.published|timesince }} назад</span>
+								</p>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row g-0">
+			<div class="col-12">
+
+				<div class="row g-0 justify-content-between mb-md-5 mb-3">
+					<div class="col-6">
+						<h3 class="fw-bold">/ {{ act_category.name }}</h3>
+					</div>
+					<div class="col-md-2 d-md-block d-none">
+						<a class="btn btn-primary w-100 mb-3" href="{% url 'category_for_posts' act_category.slug %}">Показать еще</a>
+					</div>
+					<div class="row g-0 justify-content-between">
+						{% for cat in act_category_view %}
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="{{ cat.post_img.url }}" alt="" width="310" height="200">
+							<p class="mb-1">
+								<!-- Категория -->
+								<a class="text-decoration-none" href="{% url 'podCategory_for_posts' cat.category.category.slug %}">{{ cat.category.category.name }}</a> &nbsp;
+								<span class="text-danger">
+									<!-- Подкатегория -->
+									<a href="{% url 'category_for_posts' cat.category.slug %}" class="text-decoration-none text-danger">{{ cat.category.name }}</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="{% url 'post_detail' cat.slug %}">{{ cat.title }}</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">{{ cat.published|timesince }} назад</span>
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+					<div class="col-md-2 d-md-none">
+						<a class="btn btn-primary w-100 mb-3" href="{% url 'category_for_posts' act_category.slug %}">Показать еще</a>
+					</div>
+				</div>
+
+				<div class="row g-0 justify-content-between mb-md-5 mb-3">
+					<div class="col-6">
+						<h3 class="fw-bold">/ {{ category_1.name }}</h3>
+					</div>
+					<div class="col-md-2 d-md-block d-none">
+						{% if news_category1 %}
+    					<a class="btn btn-primary w-100 mb-3" href="{% url 'category_for_posts' news_category1.0.category.slug %}">Показать еще</a>
+						{% endif %}
+					</div>
+					<div class="row g-0 justify-content-between">
+						{% for news_cat1 in news_category1 %}
+						<div class="col-sm-6 col-md-3 p-3">
+								<img class="rounded mb-3 w-100" src="{{ news_cat1.post_img.url }}" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="{% url 'podCategory_for_posts' news_cat1.category.category.slug %}">{{ news_cat1.category.category.name }}</a> &nbsp;
+								<span class="text-danger">
+									<a href="{% url 'category_for_posts' news_cat1.category.slug %}" class="text-decoration-none text-danger">{{ news_cat1.category.name }}</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="{% url 'post_detail' news_cat1.slug %}">{{ news_cat1.title }}</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">{{ news_cat1.published|timesince }} назад</span>
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+					<div class="col-md-2 d-md-none">
+						{% if news_category1 %}
+						<a class="btn btn-primary w-100 mb-3" href="{% url 'category_for_posts' news_category1.0.category.slug %}">Показать еще</a>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="row g-0 justify-content-between mb-md-5 mb-3">
+					<div class="col-6">
+						<h3 class="fw-bold">/ {{ category_2.name }}</h3>
+					</div>
+					<div class="col-md-2 d-md-block d-none">
+						{% if news_category2 %}
+    		<a class="btn btn-primary w-100 mb-3" href="{% url 'category_for_posts' news_category2.0.category.slug %}">Показать еще</a>
+						{% endif %}
+					</div>
+					<div class="row g-0 justify-content-between">
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/66c0bc7c890eab1cb3738baa_MONA-p-1080.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/82d8c8e1ee15d730b6113442e948f0ea.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/906343.png" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/68982968ada563c19eed3dbe8ac07e72.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-2 d-md-none">
+						{% if news_category2 %}
+    		<a class="btn btn-primary w-100 mb-3" href="{% url 'category_for_posts' news_category2.0.category.slug %}">Показать еще</a>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="row g-0 justify-content-between mb-md-5 mb-3">
+					<div class="col-6">
+						<h3 class="fw-bold">/ Актуальное</h3>
+					</div>
+					<div class="col-md-2 d-md-block d-none">
+						<a class="btn btn-primary w-100 mb-3" href="news_card_category.html">Показать еще</a>
+					</div>
+					<div class="row g-0 justify-content-between">
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/66c0bc7c890eab1cb3738baa_MONA-p-1080.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/82d8c8e1ee15d730b6113442e948f0ea.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/906343.png" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/68982968ada563c19eed3dbe8ac07e72.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-2 d-md-none">
+						<a class="btn btn-primary w-100 mb-3" href="news_card_category.html">Показать еще</a>
+					</div>
+				</div>
+				<div class="row g-0 justify-content-between mb-md-5 mb-3">
+					<div class="col-6">
+						<h3 class="fw-bold">/ Актуальное</h3>
+					</div>
+					<div class="col-md-2 d-md-block d-none">
+						<a class="btn btn-primary w-100 mb-3" href="news_card_category.html">Показать еще</a>
+					</div>
+					<div class="row g-0 justify-content-between">
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/66c0bc7c890eab1cb3738baa_MONA-p-1080.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/82d8c8e1ee15d730b6113442e948f0ea.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/906343.png" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+						<div class="col-sm-6 col-md-3 p-2">
+								<img class="rounded mb-3 w-100" src="img/68982968ada563c19eed3dbe8ac07e72.jpg" alt="" width="310" height="200">
+							<p class="mb-1">
+								<a class="text-decoration-none" href="">Рынки</a> &nbsp;
+								<span class="text-danger">
+									<a class="text-decoration-none text-danger" href="">Актуальное</a>
+								</span>
+							</p>
+							<h5 class="mb-3">
+								<a class="text-dark text-decoration-none" href="">От разлоков до апдейтов — топ криптособытий на этой неделе</a>
+							</h5>
+							<p class="m-0 text-secondary" style="font-size: 13px;">
+								<i class="fa-regular fa-clock text-secondary" style="font-size: 13px;"></i>
+								<span class="text-secondary"> 2 mins</span> 
+								&nbsp;<span class="text-secondary">2 часа назад</span>
+								&nbsp; &nbsp;<span>Сен 23, 2024</span>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-2 d-md-none">
+						<a class="btn btn-primary w-100 mb-3" href="news_card_category.html">Показать еще</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	{% include 'footer.html' %}
+
+  <script src="../media/js/bootstrap.bundle.js"></script>
+	<script src="../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../media/js/slick.min.js"></script>
+	<script src="../media/js/test.js"></script>
+	<script>
+		console.log('123')
+	</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../../../media/images/shopicon.png">
+	<link rel="stylesheet" type="text/css" href="../../../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../../../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../../../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+
+<body class="f-space">
+	<div id="cr-widget-marquee"
+ 	data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+ 	data-theme="light"
+ 	data-show-symbol="true"
+ 	data-show-icon="true"
+ 	data-show-period-change="true"
+ 	data-period-change="3M"
+ 	data-api-url="https://api.cryptorank.io/v0">
+ 	<a href="https://cryptorank.io">Coins by Cryptorank</a>
+ 	<script src="https://cryptorank.io/widget/marquee.js"></script>
+ 	</div>
+	{% include 'nav.html' %}
+	
+	<div class="shop-nav container mb-3">
+    <div class="row g-0 my-3 align-items-center">
+        <div class="col-lg-10 col-7">
+            <a class="" href="{% url 'shop' %}"><p class="mb-0 text-primary fw-bold">Glazovskiy<span class="fw-bold text-danger">.STORE</span></p></a>
+        </div>
+        <div class="col-lg-2 col-5 text-end">
+            <a class="btn btn-dark rounded-circle" href=""><i class="fa-brands fa-gratipay"></i></a>
+            <a class="btn btn-dark rounded-circle" href=""><i class="fa-brands fa-opencart"></i></a>
+            <a class="d-sm-none btn btn-dark rounded-circle " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Переключатель навигации" href="">
+            	<i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
+        <ul class="list-unstyled list-group d-none bg-white text-center my-3" id="navbarTogglerDemo03">
+        	{% for category in all_category %}
+        	<li class="list-group-item"><a class="text-dark text-decoration-none" href="{% url 'catalogShop' category.slug %}">{{ category.name }}</a></li>
+        	{% endfor %}	
+        </ul>
+    </div>
+    <div class="row g-0">
+     <div class="col-12 text-center">
+      <ul class="list-unstyled list-inline d-none d-sm-inline">
+       {% for category in all_category %}
+       <li class="list-inline-item"><a class="text-dark text-decoration-none" href="{% url 'catalogShop' category.slug %}">{{ category.name }}</a></li>
+       {% endfor %}
+      </ul>
+     </div>
+    </div>
+	</div>
+	
+	<div class="container">
+		<div class="row g-0 p-3">
+			<div class="col">
+				<span style="font-size: 12px;">
+					<a class="text-decoration-none text-secondary" href="{% url 'shop' %}">Главная</a> 
+					&nbsp;/&nbsp; 
+					<a class="text-decoration-none text-secondary" href="{% url 'catalogShop' category.slug %}">{{ category.name }}</a></span>
+			</div>
+		</div>
+		<h3 class="ps-3 fw-bold">{{ category.name }}</h3>
+		<div class="row g-0 p-3">
+			<span>
+				<a class="btn btn-outline-secondary m-1" href="">Новинки</a>
+				<a class="btn btn-outline-secondary m-1" href="">Футболки</a>
+				<a class="btn btn-outline-secondary m-1" href="">Худи</a>
+				<a class="btn btn-outline-secondary m-1" href="">Шорты</a>
+				<a class="btn btn-outline-secondary m-1" href="">Рубашки</a>
+				<a class="btn btn-outline-secondary m-1" href="">Брюки</a>
+				<a class="btn btn-outline-secondary m-1" href="">Худи</a>
+				<a class="btn btn-outline-secondary m-1" href="">Шорты</a>
+				<a class="btn btn-outline-secondary m-1" href="">Рубашки</a>
+				<a class="btn btn-outline-secondary m-1" href="">Брюки</a>
+			</span>
+		</div>
+	</div>
+	<div class="container-md mb-3">
+		<div class="row g-0 justify-content-evenly">
+			{% for single_product_category in product %}
+			<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+				<div class="row g-0 p-3">
+					<a class="text-decoration-none text-dark item-link" href="{% url 'product_detail' single_product_category.slug %}">
+						<div class="col-10 mx-auto">
+							<div class="item-shop-img">
+								<img class="img-fluid main-img" src="{{ single_product_category.product_img.url }}" alt="">
+								<img class="img-fluid hover-img" src="{{ single_product_category.product_img_2.url }}" alt="" style="display: none;">
+							</div>
+							<div class="item-shop-desc p-3">
+								<p class="fw-bold m-0">{{ single_product_category.title }}</p>
+								<span class="text-secondary">{{ single_product_category.category }}</span>
+								<p class="text-line mt-3"><span>{{ single_product_category.price }}₽</span> &nbsp; <span class="text-decoration-line-through">{{ single_product_category.old_price }}₽</span></p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- <div class="row g-0">
+			<div class="col text-center ">
+				<a class="btn btn-dark " href="">Загрузить еще</a>
+			</div>
+		</div> -->
+	</div>
+    
+
+ {% include 'footer.html' %}
+
+ <script src="../../../media/js/bootstrap.bundle.js"></script>
+	<script src="../../../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../../../media/js/slick.min.js"></script>
+	<script src="../../../media/js/test.js"></script>
+	<script>
+		console.log('123')
+
+		document.querySelectorAll('.item-link').forEach(link => {
+
+			link.addEventListener('mouseenter', () => {
+				const item = link.querySelector('.item-shop-img');
+				item.querySelector('.main-img').style.display = 'block';
+				item.querySelector('.hover-img').style.display = 'none';
+			});
+
+			link.addEventListener('mouseleave', () => {
+				const item = link.querySelector('.item-shop-img');
+				item.querySelector('.main-img').style.display = 'none';
+				item.querySelector('.hover-img').style.display = 'block';
+			});
+
+		});
+		
+	</script>
+</body>
+</html>

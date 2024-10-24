@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../media/images/newsicon1.png">
+	<link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+<body class="f-space">
+	<div id="cr-widget-marquee"
+  	data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  	data-theme="light"
+  	data-show-symbol="true"
+  	data-show-icon="true"
+  	data-show-period-change="true"
+  	data-period-change="3M"
+  	data-api-url="https://api.cryptorank.io/v0">
+  	<a href="https://cryptorank.io">Coins by Cryptorank</a>
+  	<script src="https://cryptorank.io/widget/marquee.js"></script>
+ 	</div>
+	{% include 'nav.html' %}
+
+	<div class="container-md">
+		<p class="p-3 m-0">
+			<a class="text-decoration-none" href="{{request.META.HTTP_REFERER}}"><i class="fa-solid fa-backward"></i> Назад</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a class="text-decoration-none fw-bold" href="{% url 'tg' %}">home</a> /
+			<a class="text-decoration-none" href="{% url 'tg_category' card.category.slug %}">{{ card.category.title }}</a> &nbsp; &nbsp;
+			<span class="dateTimePost">{{ card.created_at|timesince }} назад</span> 
+			<span><i class="ms-3 fa-regular fa-eye"></i><span class="ms-2">{{ card.visits }}</span></span>
+		</p>
+		<div class="text-center mb-3">
+   		<img class="img-fluid" src="{{ card.img_in_detail_card.url }}" alt="" width="512">
+   	</div>
+		<div class="row g-0">
+    <div class="col-md-8">
+    	<h1 class="fw-bold">{{ card.title }}</h1>
+    	{% if card.header_1 %}
+    	<h3 class="pt-3 fw-bold">{{ card.header_1 }}</h3>
+    	{% endif %}
+    	{% if card.paragraph_1 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_1 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_1_2 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_1_2 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_1_3 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_1_3 }}</p>
+    	{% endif %}
+    	<div class="inviteLink">
+    		<h1 class="py-3 fw-bold">Инвайт ссылка - <a href="">CLICK</a></h1>
+    	</div>
+    	{% if card.paragraph_1_4 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_1_4 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_1_5 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_1_5 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_1_6 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_1_6 }}</p>
+    	{% endif %}
+    	{% if card.header_2 %}
+    	<h3 class="pt-3 fw-bold">{{ card.header_2 }}</h3>
+    	{% endif %}
+    	{% if card.paragraph_2 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_2_1 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2_1 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_2_2 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2_2 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_2_3 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2_3 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_2_4 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2_4 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_2_5 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2_5 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_2_6 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_2_6 }}</p>
+    	{% endif %}
+    	{% if card.header_3 %}
+    	<h3 class="pt-3 fw-bold">{{ card.header_3 }}</h3>
+    	{% endif %}
+    	{% if card.paragraph_3 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_3_1 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3_1 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_3_2 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3_2 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_3_3 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3_3 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_3_4 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3_4 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_3_5 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3_5 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_3_6 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_3_6 }}</p>
+    	{% endif %}
+    	{% if card.header_4 %}
+    	<h3 class="pt-3 fw-bold">{{ card.header_4 }}</h3>
+    	{% endif %}
+    	{% if card.paragraph_4 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_4_1 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4_1 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_4_2 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4_2 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_4_3 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4_3 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_4_4 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4_4 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_4_5 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4_5 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_4_6 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_4_6 }}</p>
+    	{% endif %}
+    	{% if card.header_5 %}
+    	<h3 class="pt-3 fw-bold">{{ card.header_5 }}</h3>
+    	{% endif %}
+    	{% if card.paragraph_5 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_5_1 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5_1 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_5_2 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5_2 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_5_3 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5_3 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_5_4 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5_4 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_5_5 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5_5 }}</p>
+    	{% endif %}
+    	{% if card.paragraph_5_6 %}
+    	<p class="my-4" style="font-size: 20px;">{{ card.paragraph_5_6 }}</p>
+    	{% endif %}
+    	<div class="inviteLink">
+    		<h1 class="py-3 fw-bold">Инвайт ссылка - <a href="{{ card.inviteLink }}">CLICK</a></h1>
+    	</div>
+    	<!-- <h4 class="pt-3 fw-bold">Фотографии проекта</h4> -->
+    	<!-- <div class="w-100 autoplay py-3 mb-3">
+  			<div><img class="img-fluid w-100" src="img/memefi1.jpeg" alt="" width="256" height="256"></div>
+  			<div><img  class="img-fluid w-100" src="img/memefi2.jpeg" alt="" width="256" height="256"></div>
+  			<div><img  class="img-fluid w-100" src="img/memefi3.jpeg" alt="" width="256" height="256"></div>
+			</div> -->
+		</div>
+			<div class="col-lg-3 col-sm-4 mx-auto">
+				<div class="bg-dark text-white rounded p-3">
+					<h5 class="ps-3 pt-3">Категория</h5>
+					<ul class="list-unstyled p-2 border me-3 rounded" style="background-color: #c9fd35;">
+						{% for oth_cat in other_category %}
+						<li class="border-bottom border-dark mb-1"><a class="text-dark text-decoration-none fw-bold" href="{% url 'tg_category' oth_cat.slug %}">{{ oth_cat.title }}</a></li>
+						{% endfor %}
+					</ul>
+					<h5 class="ps-3 pt-3">Популярные игры</h5>
+					<ul class="list-unstyled p-2 border me-3 rounded" style="background-color: #c9fd35;">
+						{% for card_ex in allCard_exclude %}
+						<li class="border-bottom border-dark mb-1"><a class="text-dark text-decoration-none fw-bold" href="{% url 'tg_card_detail' card_ex.slug %}">{{ card_ex.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include 'footer.html' %}
+
+ 	<script src="../media/js/bootstrap.bundle.js"></script>
+	<script src="../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../media/js/slick.min.js"></script>
+	<script src="../media/js/test.js"></script>
+	<script>
+		console.log('123')
+
+	</script>
+</body>
+</html>

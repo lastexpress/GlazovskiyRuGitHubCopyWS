@@ -1,0 +1,1760 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ПРИВЕТСВЕННОЕ ОКНО ПРИ ЗАХОДЕ НА САЙТ + НАВИГАЦИЯ  */
+
+.hello-winodws{
+	height: 100vh;
+	background-image: url("img/a-computer-desktop-wallpaper-for-forex-trading-terminal-ai-generative-desktop-background-free-photo.jpg");
+}
+
+.nav{
+	width: 50%;
+	border:1px solid #1f9c32;
+	border-radius: 32px;
+	margin:0px auto;
+	background-color: #333;
+}
+
+.nav ul{
+	display: flex;
+	list-style-type: none;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.nav ul li{
+	margin-right: 25px;
+	margin-left: 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav ul li img{
+	width: 30px;
+	margin-bottom: 8px;
+}
+
+.nav ul li a{
+	text-decoration: none;
+	color: #41bf65;
+	text-align: center;
+}
+
+.nav ul li a:hover{
+	color:#fff;	
+}
+
+.frame2Raw{
+		height: 100%;
+		/*border:1px solid black;
+		background-image: url("img/a-computer-desktop-wallpaper-for-forex-trading-terminal-ai-generative-desktop-background-free-photo.jpg");*/
+		/*background-size: cover;
+		background-repeat: no-repeat;
+		position: relative;*/
+		
+	}
+		.frame2Col{
+			height: auto;
+/*			border:1px solid white;*/
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+			.quote-container {
+    			background-color: #f9f9f9;
+    			border-left: 5px solid #ccc;
+    			padding: 20px;
+    			margin: 20px;
+			}
+				.quote {
+    				font-style: italic;
+    				font-size: 18px;
+    			}
+    				.author {
+    					margin-top: 10px;
+    					font-weight: bold;
+    				}
+
+/* ----------------
+		ТГ ТЕМОЧКА
+ ---------------- */
+.tg-greetings-section{
+	height: 90vh;
+	background-image: url("img/toncoin-payments-now-on-telegram-how-has-ton-reacted.webp");
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.tg-greetings-container{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  bottom: 0;
+  left: 135px;
+}
+
+.tg-greetings-play-button{
+	position: absolute;
+  left: calc(50% - 61px);
+  top: calc(50% - 61px);
+  width: 122px;
+  height: 122px;
+  text-align: center;
+  padding-top: 35px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.tg-greetings-container-text{
+	margin-bottom: 80px;
+  padding: 27px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.tg-greetings-container-text h2{
+	font-size: 48px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1px;
+}
+
+.tg-greetings-container-text p{
+	font-size: 18px;
+  color: #a3a1b3;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.tg-greetings-container-text:after{
+	position: absolute;
+  content: "";
+  width: 9px;
+  height: 100%;
+  left: -22px;
+  top: 0;
+  border-left: 3px solid #de46d6;
+  background: #fff;
+  -webkit-box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.5);
+  box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.5);
+}
+
+/* Стили для модального окна */
+.modal {
+	display: none; /* Скрыто по умолчанию */
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+}
+
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 38px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.game-section{
+	background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	display: none;
+}
+
+.game-section.active{
+	display: flex;
+}
+
+.game-section-container{
+	width: 70%;
+	display: flex;
+	justify-content: center;
+	margin:80px auto 0px auto;
+}
+
+.game-section-container-row{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	width: 80%;
+}
+
+.game-section-card h5{
+	font-size: 20px;
+  color: #fff;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+
+.read-More{
+	font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  color: #b01ba5;
+  text-decoration: none;
+}
+	.read-More img{
+		padding-left: 13px;
+	}
+
+.game-section-card{
+	margin-bottom: 80px;
+}
+
+.game-section-card-img{
+	width: 200px;
+	height: 200px;
+/*	border:1px solid black;*/
+}
+	.game-section-card-img img{
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+.widget-item{
+	margin-bottom: 55px;
+}
+
+.categories-widget{
+	background: #34164b;
+  padding: 55px 0 25px;
+}
+
+.widget-title{
+	color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  padding-left: 38px;
+  margin-bottom: 48px;
+}
+
+.categories-widget ul {
+  list-style: none;
+  padding: 0 38px;
+}
+
+.categories-widget ul li a{
+	color: #b01ba5;
+	text-decoration: none;
+}
+
+
+#pagination {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+}
+	@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.pagination-container{
+	display: flex;
+	align-items: center;
+	width: 60%;
+	margin:0px auto;
+}
+
+/*#pagination button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 980px;
+  border:none;
+  background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
+  color: #fff;
+  margin-left: 150px;
+}*/
+
+.games-next-btn,.games-second-btn{
+	border: none;
+  color: #333;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+#page-indicators {
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.indicator.active {
+    background-color: blue;
+    color: white;
+}
+
+#current-page,
+#total-pages {
+    margin: 0 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* --------------------------------ОДИНОЧНАЯ СТАРНИЦА ПОСТА ПРО ТЕМКУ ТГ------------------------------------- */
+.tg-themes-nav{
+	background-color: #333;
+}
+
+.games-single-page{
+	min-height: 100vh;
+	background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
+}
+
+.games-single-container{
+	width: 80%;
+/*	border:1px solid yellow;*/
+	height: 100%;
+	margin: 0px auto;
+	padding-top: 50px;
+}
+
+.games-single-title-img{
+	width: 1220px;
+	height: 450px;
+/*	border:1px solid red;*/
+	margin: 0px auto 100px auto;
+	display: flex;
+	justify-content: center;
+}
+
+.games-single-title-img img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.games-single-row{
+	display: flex;
+	margin:0px auto;
+	width: 1220px;
+}
+
+.games-single-title{
+	font-size: 60px;
+	color:#fff;
+	margin-bottom: 50px;
+}
+
+.games-single-date{
+	font-size: 18px;
+	color: #68647d;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+.games-single-date a{
+	color: #b01ba5;
+	text-decoration: none;
+}
+
+.games-single-face{
+	padding-right: 15px;
+  padding-left: 15px;
+}
+
+.games-single-face h4{
+	color: #b01ba5;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.games-single-face p{
+	font-size: 16px;
+  font-weight: 500;
+  color: #68647d;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.games-single-right-nav{
+	padding-right: 15px;
+  padding-left: 15px;
+/*  border: 1px solid green;*/
+  width: 80%;
+}
+
+.games-single-sticky{
+
+}
+
+.games-single-sticky-card{
+	margin-bottom: 55px;
+}
+
+.games-single-sticky-card-rating{
+	background: #34164b;
+  padding: 55px 0 30px;
+}
+
+.games-single-sticky-card-rating h4{
+	color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  padding-left: 18px;
+  margin-bottom: 48px;
+}
+
+.games-single-sticky-card-rating ul{
+	list-style: none;
+  padding: 0px 18px;
+  margin-bottom: 30px;
+}
+
+.games-single-sticky-card-rating ul li{
+  display: block;
+  font-size: 16px;
+  color: #b01ba5;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.games-single-sticky-card-rating ul li a{
+	display: block;
+  font-size: 16px;
+  color: #b01ba5;
+  text-decoration: none;
+}
+
+.games-single-sticky-card-rating ul li span{
+	float: right;
+  color: #68647d;
+}
+
+.weblinkProject{
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------------------- ПОГОДА ----------------------------------------------------------------  */
+.weather-screen-container{
+	background-color: #333;
+}
+
+
+.weather-container {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.weather-card {
+    display: inline-block;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.current-time-for-weather {
+    padding: 10px 0px 0px 0px ;
+}
+
+.town-and-weather {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.weather-img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.weather-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.current-temp {
+    font-size: 36px;
+    color: #333;
+}
+
+.timeline-weather {
+    padding: 10px;
+}
+
+.mini-card-time-weather {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------- ВРЕМЯ -----------------------------------------------------*/
+
+.time-container{
+	min-width: 150px;
+	min-height: 50px;
+	background-color: white;
+	border:1px solid black;
+	position: absolute;
+	top:0px;
+	right: 75px;
+}
+	.time-container h2{
+		padding: 0px;
+		margin: 0px;
+		text-align: center;
+		font-size: 14px;
+	}
+	#current-time{
+		text-align: center;
+		margin: 5px;
+	}
+
+/* -------------------------------------------------- ОБО МНЕ СТРАНИЦА -------------------------------------------*/
+.nav-about{
+	background-color: #282B32;
+}
+
+.frameAboutMe{
+	background-color: #282B32;
+	min-height: 80vh;
+	display: flex;
+	justify-content: center;
+}
+	.frameAboutMeContent{
+		width: 68%;
+		height: 100%;
+/*		border:1px solid white;*/
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 30px;
+	}	
+		.frameAboutMeContent h1{
+			color: #F65921;
+			font-size: 42px;
+		}
+		.aboutMe-text{
+			width: 650px;
+			font-size: 26px;
+			text-align: center;
+			color: #ffffff;
+			padding: 0px;
+			margin: 0px;
+		}
+		.frameAboutMeLogo{
+			width: 250px; /* Ширина контейнера */
+    		height: 250px; /* Высота контейнера */
+    		border-radius: 50%; /* Делаем контейнер круглым */
+    		overflow: hidden; /* Обрезаем содержимое, которое выходит за пределы круга */
+    		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Добавляем тень для стиля */
+		}
+			.frameAboutMeLogoPhoto {
+    			width: 100%; /* Ширина аватарки равна ширине контейнера */
+    			height: 100%; /* Высота аватарки равна высоте контейнера */
+    			object-fit: cover; /* Масштабируем изображение, чтобы оно полностью заполнило контейнер */
+			}
+				.frameAboutMeMenu{
+					height: 300px;
+					width: 100%;
+/*					border:1px solid white;*/
+					margin:30px 0px 10px 0px;
+					display: flex;
+					justify-content: space-around;
+					align-items: center;
+				}
+					.frameAboutMeMenuCircle{
+						width: 200px; /* Диаметр круга */
+    					height: 200px; /* Диаметр круга */
+    					background-color: #ffffff; /* Белый фон */
+    					border-radius: 50%; /* Круглый элемент */
+    					display: flex;
+    					justify-content: center;
+    					align-items: center;
+    					transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Анимация при фокусе */
+    					box-shadow: 0 0 0 transparent; /* Начальная тень */
+					}
+					.frameAboutMeMenuCircle:hover{
+						transform: translateY(-5px); /* Поднять круг при фокусе */
+    					box-shadow: 0 5px 15px rgba(238, 87, 44, 0.5);
+    					cursor: pointer;
+					}
+					.circle-text{
+						font-size: 24px;
+						color: #EE572C; /* Оранжевый цвет текста */
+    					text-align: center;
+					}
+
+.books-title{
+	text-align: center;
+	margin-top: 30px;
+}
+.books-row{
+/*	border:1px solid black;*/
+/*	height: 100vh;*/
+	margin:15px;
+	display: flex;
+}
+	.books-col-left-nav{
+/*		width: 10%;*/
+/*		border:1px solid black;*/
+	}
+		.books-col-left-nav h3{
+			padding: 0px;
+			margin: 0px;
+		}
+	.books-col-right-content{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+.category-list{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+	.category-name{
+		margin: 0px 0px 0px 10px;
+	}
+	.category-list a{
+		text-decoration: none;
+		font-size: 12px;
+		color: #333;
+	}
+	.category-list a:hover{
+		color: #e47911;
+	}
+
+.books-col-right-row{
+/*	border:1px solid black;*/
+	width: 90%;
+	padding: 30px;
+	display: flex;
+	justify-content: space-around;
+}
+	.books-col-right-row a{
+		text-decoration: none;
+	}
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+}
+
+.card-description {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничение строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.crypto,.programmingCode,.pav,.allOther{
+	display: none;
+}
+
+
+.resume-container{
+  width:100%;
+  min-height:100vh;
+  display:none;
+  justify-content:center;
+  position: absolute;
+  top:90px;
+  background-color: white;
+}
+  .resume-container-col{
+    width:60%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    padding:0px 45px;
+    margin-bottom:35px;
+  }
+    .resume-row{
+      border-bottom:1px dotted black;
+      display:flex;
+
+    }
+      .resume-row2, .resume-row3, .resume-row4,.resume-row5{
+        display:flex;
+        flex-direction:column;
+        margin-top:15px;
+        padding:0px 45px;
+        position:relative;
+        border-bottom:1px dotted black;
+      }
+        .resume-row2-title p{
+          font-size:24px;
+          font-weight:bold;
+          color: #476891;
+        }
+        .resume-row2-info p{
+          font-size:18px;
+        }
+        .personal-icon{
+          position:absolute;
+          left:0px;
+          top:5px;
+        }
+      .resume-main-img{
+        width:450px;
+        height:380px;
+        display:flex;
+        justify-content:center;
+      }
+        .resume-main-img img{
+
+        }
+        .resume-main-title{
+          width:100%;
+          padding:10px 25px 0px 25px;
+          margin-bottom:10px;
+        }
+          .resume-title{
+          }
+            .resume-title h1{
+              font-size:40px;
+              color: #476891;
+            }
+              .resume-info-work{
+                border-bottom:1px dotted black;
+                margin-bottom:15px;
+              }
+                .resume-info-work p{
+                  font-size:21px;
+                }
+                  .resume-personal-info{
+                    border:1px solid black;
+                    width:100%;
+                  }
+                    .resume-personal-info-title{
+                      display:flex;
+                      align-items:center;
+                    }
+                      .resume-personal-title{
+                        display:flex;
+                        justify-content:center;
+                        align-items:flex-end;
+                      }
+                        .resume-personal-title p{
+                          font-size:28px;
+                          font-weight:bold;
+                          color: #476891;
+                        }
+                          .resume-icon{
+                            margin-right:15px;
+                          }
+                            .resume-pers-info{
+                              padding:0 25px;
+                            }
+.close-button,.close-button-project {
+    position: absolute;
+    top: 10px;
+    right: 300px;
+    cursor: pointer;
+    font-size: 40px;
+    color: #888;
+}
+	.close-button:hover,.close-button-project:hover {
+    	color: #000;
+    }
+.close-button-skill{
+	position: absolute;
+    top: 10px;
+    right: 300px;
+    cursor: pointer;
+    font-size: 40px;
+    color: #ffffff;
+}
+	.close-button-skill:hover{
+		color: #ffff00;
+	}
+.close-button-contactUs{
+	position: absolute;
+    top: 10px;
+    right: 300px;
+    cursor: pointer;
+    font-size: 40px;
+    color: #888;
+}
+	.close-button-contactUs:hover{
+		color: #000;
+	}
+
+
+.my-project{
+	width:100%;
+/*  	min-height:100vh;*/
+  	display:none;
+  	justify-content:center;
+  	background-color: white;
+  	position: absolute;
+  	top:90px;
+}
+	.project-col{
+		width: 65%;
+/*		height: 100vh;*/
+/*		border:1px solid #000000;*/
+	}
+		.project-raw-title{
+			text-align: center;
+		}
+		.project-raw-cards{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			margin: 30px 0px;
+		}
+			.project-card{
+				border:3px solid #476891;
+				box-shadow: ;
+				width: 350px;
+				border-radius: 8px;
+				overflow: hidden;
+				transition: transform 0.6s ease;
+			}
+			.project-card:hover{
+				transform: scale(1.055);
+				cursor: pointer;
+			}
+				.project-card-img{
+					width: 100%;
+					height: 200px;
+				}
+					.project-card-img img{
+						width: 100%;
+						height: 100%;
+					}
+.my-skill{
+	width:100%;
+  	min-height:90vh;
+  	display:none;
+  	flex-direction: column;
+  	align-items: center;
+  	background-color: #1f1f37;
+  	position: absolute;
+  	top:70px;
+}
+	.my-skill-title h1{
+		color: #ffffff;
+		margin-top: 30px;
+	}
+		.my-skill-row{
+			display: flex;
+			flex-direction: column;
+			width: 70%;
+			min-height: auto;
+/*			border:1px solid white;*/
+		}
+	.my-skill-row{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 20px;
+		min-height: 20vh;
+	}
+			.my-skill-logo{
+				width: 500px;
+				height: 500px;
+			}
+				.my-skill-logo img{
+					width: 100%;
+					height: 100%;
+				}
+			.my-skill-col{
+/*				height: 600px;*/
+/*				border:1px solid white;*/
+			}
+			.my-skill-bar-check{
+/*				border:1px solid white;*/
+				width: 700px;
+				min-height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.bar-check-text{
+				display: flex;
+				justify-content: space-between;
+			}
+				.bar-check-text p{
+					color: #ffffff;
+					margin: 3px;
+					font-size: 21px;
+					font-weight: bold;
+				}
+			.progress-bar {
+        		width: 70%;
+            	height: 10px;
+            	background-color: #e44c1f;
+            	text-align: center;
+            	line-height: 30px;
+            	color: #000000;
+            	border-radius: 25px 0 0 25px;
+            	position: relative;
+        	}
+        	.progress-bar-css{
+        		width: 50%;
+            	height: 10px;
+            	background-color: #00a0e3;
+            	text-align: center;
+            	line-height: 30px;
+            	color: #000000;
+            	border-radius: 25px 0 0 25px;
+            	position: relative;
+        	}
+        	.progress-bar-js{
+        		width: 30%;
+            	height: 10px;
+            	background-color: #ffff00;
+            	text-align: center;
+            	line-height: 30px;
+            	color: #000000;
+            	border-radius: 25px 0 0 25px;
+            	position: relative;
+        	}
+        	.progress-bar-django{
+        		width: 40%;
+            	height: 10px;
+            	background-color: #32AC7B;
+            	text-align: center;
+            	line-height: 30px;
+            	color: #000000;
+            	border-radius: 25px 0 0 25px;
+            	position: relative;
+        	}
+        		.progress-text{
+        			position: absolute;
+            		top: -25px; /* Расстояние над шкалой */
+            		right: 0;
+            		transform: translateX(100%); /* Перемещает текст влево */
+            		font-size: 21px; /* Размер шрифта */
+            		color: #ffffff; /* Цвет текста */
+        		}
+
+.contactus-portfolio{
+	width:100%;
+  	min-height:100vh;
+  	display:none;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: space-between;
+  	background-color: #ffffff;
+  	position: absolute;
+  	top:90px;
+}
+	.contact-us-row{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+		.contac-us-img{
+			width: 750px;
+			height: 750px;
+		}
+			.contac-us-img img{
+				width: 100%;
+				height: 100%;
+			}
+.contact-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+.contact-form h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input,.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #76c7c0;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #5aa8a0;
+}
+
+
+/* --------------------------------------- FOOOTER -------------------------------------- */
+.fot-end{
+	min-height:100vh;
+}
+	.footer-title{
+		min-height:40vh;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		background-color: #141517;
+	}
+		.link-icon img{
+			width:40px;
+			height:40px;
+			margin:10px 15px;
+		}
+			.link-icon{
+				display:flex;
+				justify-content:center;
+				align-items:center;
+			}
+				.footer-title-content{
+					text-align:center;
+				}
+					.footer-title-content h1{
+						font-size:32px;
+						color:#00F7BA;
+						margin:50px 0px 50px 0px;
+					}
+						.footer-content{
+							min-height:60vh;
+							display:flex;
+							justify-content:center;
+							align-items:center;
+							background-color:#28292B;
+						}
+							.footer-row{
+								margin:45px 0px;
+								min-height:300px;
+								display:flex;
+							}
+								.footer-col{
+									margin:0px 130px 0px 130px;
+									width:150px;
+								}
+									.footer-col h1{
+										color:#00F7BA;
+										margin:0px 0px 15px 0px;
+										font-size:21px;
+									}
+										.footer-col p{
+											font-size:18px;
+											margin:10px 0px;
+											color: #616363;
+										}
+											.footer-col p a{
+												text-decoration:none;
+												color: #616363;
+											}
+												.footer-col p a:hover{
+													color: #008080
+												}
+        		
+
+
+
+
+@media (max-width: 600px) {
+	.fot-end{
+		width: 100%;
+	}
+	.footer-row{
+		display: flex;
+		flex-direction: column;
+	}
+	.link-icon{
+		display: block;
+	}
+	.footer-col{
+		margin:0px;
+		padding: 0px;
+	}
+	.nav{
+		margin: 0px;
+		padding: 0px;
+		display: inline-block;
+	}
+	.nav ul li{
+		margin: 10px;
+		padding: 0px;
+	}
+	.nav ul li a{
+		font-size: 12px;
+	}
+	.frame3Col{
+		display: none;
+	}
+    .frameAboutMeMenu{
+    	display: flex;
+    	flex-direction: column;
+    }
+    .img-town{
+    	width: 20%;
+    }
+    .img-town img{
+    	width: 100%;
+    }
+    .logo{
+    	width: 15%;
+    }
+    .time-container{
+    	right: 0px;
+    }
+    .frameAboutMeContent h1{
+    	text-align: center;
+    }
+    .aboutMe-text{
+    	text-align: center;
+    	width: 300px;
+    	font-size: 14px;
+    }
+    .frameAboutMeMenu{
+    	height: 900px;
+    }
+    .close-button,.close-button-skill,.close-button-project,.close-button-contactUs{
+    	right: 20px;
+    }
+    .resume-title h1{
+    	font-size: 26px;
+    }
+    .resume-container,.my-project,.my-skill,.contactus-portfolio{
+    	top: 140px;
+    }
+    .my-skill-row{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .my-skill-logo{
+    	width: 350px;
+    	height: 350px;
+    }
+    .my-skill-col{
+    	height: 300px;
+    }
+    .my-skill-bar-check{
+    	width: 350px;
+    }
+    .project-raw-cards{
+    	display: flex;
+    	flex-direction: column;
+    }
+    .project-card{
+    	margin: 10px 0px;
+    }
+    .my-project{
+    	background-color: #212728;
+    }
+    .project-raw-title h1{
+    	color: #fff;
+    }
+    .close-button-project{
+    	color: #afa057;
+    }
+    .close-button-project:hover{
+    	color: #fff;
+    }
+    .contac-us-img{
+    	display: none;
+    }
+    .contact-us-col{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .contactus-portfolio{
+    	min-height: 700px;
+    }
+    .resume-main-img{
+    	width: 250px;
+    	height: 250px;
+    }
+    	.resume-main-img img{
+    		width: 100%;
+    	}
+
+/*    ЗДЕСЬ КОД ДЛЯ СТРАНИЦЫ КНИГ*/
+	.card{
+		border: 1px solid black;
+		margin:5px 0px;
+	}
+		.card img{
+			margin-top: 3px;
+		}
+/*	.books-row{
+		width: 100%;
+	}*/
+	.card-title{
+		font-size: 12px;
+	}
+	.card-description{
+		font-size: 14px;
+	}
+	.books-col-right-content h1{
+		font-size: 26px;
+		text-align: center;
+	}
+	.books-col-right-row{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0px;
+	}
+
+	/*	ТГ ТЕМКИ */
+	.tg-greetings-section{
+		width: 100%;
+	}
+	.tg-greetings-container{
+		left: 50px;
+	}
+	.tg-greetings-container-text h2{
+		font-size: 24px;
+	}
+	.tg-greetings-container-text p{
+		font-size: 14px;
+	}
+	.modal-content{
+		width: 80%;
+	}
+	#videoFrame{
+		width: 100%;
+		height: 300px;
+	}
+	.game-section{
+		padding: 0px;
+		margin: 0px;
+	}
+	.game-section-container{
+		padding: 0px;
+		margin: 0px;
+		width: 100%;
+		display: block;
+	}
+	.game-section-container-row{
+		display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin:50px 0px 0px 0px;
+	}
+	.inner-wrapper-sticky{
+		display: none;
+	}
+	.game-section-card{
+		width: 160px;
+		height: 160px;
+		margin-bottom: 180px;
+		margin-right: 10px;
+		margin-left: 15px;
+	}
+	.game-section-card-img{
+		width: 100%;
+		height: 100%;
+	}
+	.game-section-card h5{
+		font-size: 16px;
+	}
+	.read-More{
+		font-size: 12px;
+	}
+
+	/*	ПОГОДА */
+	.weather-container{
+		white-space: unset;
+	}
+	.weather-row{
+		display: grid;
+		grid-template-columns: repeat(2, 0.5fr);
+	}
+	.weather-card{
+		margin:20px 0px;
+	}
+}
+
+
+
+/* Стили для экранов шириной меньше или равной 768px */
+@media (max-width: 768px) {
+    .navigation {
+    	width: 80%;
+    	display: flex;
+        flex-direction: row; /* Располагаем элементы в столбец */
+        align-items: center; /* Выравниваем элементы по центру по горизонтали */
+    }
+    input[type="email"] {
+    	width: 100px;
+    }
+
+    
+    .frame3Col{
+		display: none;
+	}
+	.nav{
+		display: flex;
+		flex-direction: column;
+	}
+	.logo{
+    	width: 25%;
+    }
+    .time-container{
+    	right:0px;
+    }
+    .frameAboutMeContent{
+    	width: 100%;
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .frameAboutMeMenu{
+    	height: 900px;
+    	display: flex;
+    	flex-direction: column;
+    }
+    .frameAboutMeContent h1{
+    	text-align: center;
+    }
+    .aboutMe-text{
+    	width: 350px;
+    	font-size: 16px;
+    }
+    .resume-row{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .resume-title h1{
+    	font-size: 26px;
+    }
+    .close-button,.close-button-skill,.close-button-project,.close-button-contactUs{
+    	right: 20px;
+    }
+    .resume-container,.my-project,.my-skill,.contactus-portfolio{
+    	top: 140px;
+    }
+    .my-skill-row{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .my-skill-logo{
+    	width: 350px;
+    	height: 350px;
+    }
+    .my-skill-col{
+    	height: 300px;
+    }
+    .my-skill-bar-check{
+    	width: 350px;
+    }
+    .resume-main-img img{
+    	width: 100%;
+    }
+    .project-raw-cards{
+    	display: flex;
+    	flex-direction: column;
+    }
+    .project-card{
+    	margin: 10px 0px;
+    }
+    .my-project{
+    	background-color: #212728;
+    }
+    .project-raw-title h1{
+    	color: #fff;
+    }
+    .contac-us-img{
+    	display: none;
+    }
+    .contact-us-col{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .contactus-portfolio{
+    	min-height: 700px;
+    }
+
+	/*КНИГИ    */
+    .card{
+		border: 1px solid black;
+		margin:5px 0px;
+	}
+		.card img{
+			margin-top: 3px;
+		}
+/*	.books-row{
+		width: 100%;
+	}*/
+	.card-title{
+		font-size: 12px;
+	}
+	.card-description{
+		font-size: 14px;
+	}
+	.books-col-right-content h1{
+		font-size: 26px;
+		text-align: center;
+	}
+	.books-col-right-row{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0px;
+	}
+
+	/*	ТГ ТЕМКИ */
+	.game-section{
+		padding: 0px;
+		margin: 0px;
+	}
+	.game-section-container{
+		padding: 0px;
+		margin: 0px;
+		width: 100%;
+		display: block;
+	}
+	.game-section-container-row{
+		display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin:50px 0px 0px 0px;
+	}
+	.inner-wrapper-sticky{
+		display: none;
+	}
+	.game-section-card{
+		width: 160px;
+		height: 160px;
+		margin-bottom: 180px;
+		margin-right: 10px;
+		margin-left: 15px;
+	}
+	.game-section-card-img{
+		width: 100%;
+		height: 100%;
+	}
+	.game-section-card h5{
+		font-size: 16px;
+	}
+	.read-More{
+		font-size: 12px;
+	}
+	.tg-greetings-container{
+		left: 50px;
+	}
+
+	/*	ПОГОДА */
+	.weather-container{
+		white-space: unset;
+	}
+	.weather-row{
+		display: grid;
+		grid-template-columns: repeat(2, 0.5fr);
+	}
+	.weather-card{
+		margin:20px 0px;
+	}
+}
+
+/* Стили для экранов шириной меньше или равной 992px */
+@media (max-width: 992px) {
+	.nav{
+		width: 100%;
+	}
+	.nav ul li a{
+		text-align: center;
+	}
+  .frame3Col{
+		display: none;
+	}
+    .time-container{
+    	right:0px;
+    }
+    .frameAboutMeContent{
+    	width: 100%;
+    }
+    .close-button,.close-button-skill,.close-button-project,.close-button-contactUs{
+    	right: 20px;
+    }
+    .resume-container,.my-project,.my-skill,.contactus-portfolio{
+    	top: 250px;
+    }
+    .resume-row{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .resume-main-img{
+    	width: 300px;
+    	height: 300px;
+    }
+    	.resume-main-img img{
+    		width: 100%;
+    	}
+    .resume-title h1{
+    	font-size: 26px;
+    }
+    .my-skill-row{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .my-project{
+    	height: 90vh;
+    }
+    .my-skill-logo{
+    	width: 350px;
+    	height: 350px;
+    }
+    .my-skill-col{
+    	height: 300px;
+    }
+    .my-skill-bar-check{
+    	width: 350px;
+    }
+    .project-col{
+    	width: 90%;
+    }
+    .project-card{
+    	width: 250px;
+    	height: 150px;
+    }
+    .contac-us-img{
+    	display: none;
+    }
+    .contact-us-col{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    .contactus-portfolio{
+    	min-height: 700px;
+    }
+
+    /*КНИГИ    */
+    .card{
+		border: 1px solid black;
+		margin:5px 0px;
+	}
+		.card img{
+			margin-top: 3px;
+		}
+	.books-row{
+		width: 100%;
+	}
+	.card-title{
+		font-size: 12px;
+	}
+	.card-description{
+		font-size: 14px;
+	}
+	.books-col-right-content h1{
+		font-size: 26px;
+		text-align: center;
+	}
+	.books-col-right-row{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0px;
+	}
+
+	/* ТГ ТЕМКИ	*/
+	.inner-wrapper-sticky{
+		display: none;
+	}
+	.game-section-container{
+		padding: 0px;
+		margin:0px;
+		display: inline-grid;
+	}
+	.game-section-card{
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+	.game-section-container{
+		margin-top: 50px;
+	}
+
+	/*	ТГ СТРАНИЦА КАЖДАЯ ОТДЕЛЬНАЯ ТЕМКА */
+	.games-single-container{
+		display: inline-block;
+		width: 100%;
+	}
+	.games-single-title-img{
+		padding: 0px;
+		margin: 0px 0px 50px 0px;
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	}
+	.games-single-row{
+		width: 100%;
+	}
+	.games-single-right-nav{
+		padding: 5px;
+	}
+	.games-single-sticky-card-rating ul{
+		padding: 5px;
+	}
+	.games-single-sticky-card-rating h4{
+		padding: 5px;
+	}
+	.games-single-sticky-card-rating ul li a{
+		font-size: 12px;
+	}
+	/*	ПОГОДА */
+	.weather-container{
+		white-space: unset;
+	}
+	.weather-row{
+		display: grid;
+		grid-template-columns: repeat(3, 0.5fr);
+	}
+	.weather-card{
+		margin:20px 0px;
+	}
+}
+
+/* Стили для экранов шириной меньше или равной 1200px */
+@media (max-width: 1200px) {
+	.game-section.active{
+		display: flex;
+	}
+	.game-section-container-row{
+		margin:80px 20px;
+	}
+	.game-section-container-row{
+		display: grid;
+    grid-template-columns: repeat(2, 1fr);
+	}
+	.game-section-container{
+
+	}
+}

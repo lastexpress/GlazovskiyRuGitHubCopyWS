@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../media/images/tgicon.webp">
+	<link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+
+<body class="f-space">
+	<div id="cr-widget-marquee"
+  	data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  	data-theme="light"
+  	data-show-symbol="true"
+  	data-show-icon="true"
+  	data-show-period-change="true"
+  	data-period-change="3M"
+  	data-api-url="https://api.cryptorank.io/v0">
+  	<a href="https://cryptorank.io">Coins by Cryptorank</a>
+  	<script src="https://cryptorank.io/widget/marquee.js"></script>
+ </div>
+	{% include 'nav.html' %}
+
+	
+	<div class="container mt-2">
+		<div class="row g-0">
+			<h5 class="fw-bold text-center">Telegram (темки)</h5>
+			<p class="mb-3 p-0">
+				Telegram Mini Apps — это легковесные приложения, которые разработчики могут создавать с использованием JavaScript и интегрировать прямо внутри Telegram. Они предлагают гибкие интерфейсы и могут полностью заменить традиционные веб-сайты, предоставляя пользователям доступ к функционалу без выхода из мессенджера. Здесь выложена вся информация по кликерам и прочим мини-приложениям Telegram Apps.
+			</p>
+				<div class="container">
+					<div class="rounded-3 mx-auto">
+						<h3 class="text-center fw-bold">Мини-Игра</h3>
+						<div class="bg-dark w-lg-25 mx-auto">
+							<div class="bg-dark p-0 mx-auto" id="play-button" style="
+							width: 320px;
+							margin-right: auto;
+							margin-left: auto;
+							height: 320px;
+							background-image: url('../media/images/Chelsea-FC-icon.png'); 
+							background-repeat: no-repeat; 
+							background-size: cover; 
+							transition: transform 0.1s ease; ">
+						</div>
+						<p class="m-0 text-light fw-bold text-center pt-3">1 тап = 1 монета</p>
+						<p class="text-center text-light">500 монет = 1$ USD</p>
+						<p class="mb-0 text-center text-light">Баланс: &nbsp;<i class="fa-solid fa-coins text-warning"></i> <span id="tableCountClick">0</span></p>
+						<p class="p-0 m-0 text-center text-light" id="infoBalance" style="display: none;"></p>
+						<p class="text-center p-3 m-0"><span><button class="btn btn-outline-success">Купить</button></span> <span><button class="btn btn-outline-danger">Продать</button></span></p>
+							
+						</div>
+					</div>
+				</div>
+			<div class="col-md-8 col-sm-12 p-3">
+				<div class="row g-0">
+					{% for card in cards %}
+					<div class="col-6 col-md-3 col-sm-6 p-3">
+						<a class="text-decoration-none text-dark" href="{% url 'tg_card_detail' card.slug %}">
+							<img class="img-fluid" src="{{ card.logo.url }}" alt="">
+							<p class="fw-bold">{{ card.title }}</p>
+							<button class="btn btn-dark" type="button">
+								<a class="d-block text-white text-decoration-none" href="{% url 'tg_card_detail' card.slug %}">Читать дальше...</a>
+							</button>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="col-md-4 p-3">
+				<div class="mb-3 p-3 bg-dark w-100 rounded-3">
+					<h3 class="fw-bold my-3 text-white">Категории</h3>
+					<ul class="list-unstyled">
+						{% for cat in all_category %}
+						<li class="py-2 border-bottom w-75"><a class="btn w-100 border text-start text-white fw-bold text-decoration-none" href="{% url 'tg_category' cat.slug %}">{{ cat.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<div class="mb-3 p-3 bg-dark rounded-3">
+					<h3 class="fw-bold my-3 text-white">Популярные игры</h3>
+					<ul class="list-unstyled">
+						{% for card in cards %}
+						<li><a class="fw-bold text-decoration-none link-light" href="{% url 'tg_card_detail' card.slug %}">{{ card.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include 'footer.html' %}
+
+ <script src="../media/js/bootstrap.bundle.js"></script>
+	<script src="../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../media/js/slick.min.js"></script>
+	<script src="../media/js/test.js"></script>
+	<script>
+		console.log('123')
+
+		// При входе в систему. если нажал на кнопку "Играть", то идет таймер с 30 сек до 0. и количество клика.
+
+		let timeValue = 30;
+		let countClick = 0;
+		let time;
+		let range_min = 0;
+		let range_max = 10;
+		let random_num = [1,2,3];
+
+		const playButton = document.getElementById('play-button');
+		const	tableCountClick = document.getElementById('tableCountClick');
+		const info_balance = document.getElementById('infoBalance');
+		
+		function getRandomArbitrary(min, max) {
+  return Math.floor(Math.random() * (max - min));
+	}		
+
+		playButton.addEventListener('click', function(event, num){
+			event.preventDefault();
+			num = getRandomArbitrary(1, 10)
+			console.log(num);
+			countClick++;
+			countClick = num + countClick;
+			tableCountClick.textContent = countClick;
+			playButton.classList.add('clicked');
+
+			setTimeout(() => {
+        playButton.classList.remove('clicked');
+    }, 50); // 100 мс – время вдавливания
+			if (countClick > 120){
+				info_balance.textContent = 'У вас уже: ' + countClick + ' монет';
+				info_balance.style.display = 'block';
+			} else if (countClick){
+				info_balance.textContent = 'У вас уже: ' + countClick + ' монет';
+			}
+		}, false);
+	</script>
+</body>
+	
+</html>

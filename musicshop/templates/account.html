@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../media/images/newsicon1.png">
+	<link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+
+<body class="f-space">
+	<div id="cr-widget-marquee"
+  	data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  	data-theme="light"
+  	data-show-symbol="true"
+  	data-show-icon="true"
+  	data-show-period-change="true"
+  	data-period-change="3M"
+  	data-api-url="https://api.cryptorank.io/v0">
+  	<a href="https://cryptorank.io">Coins by Cryptorank</a>
+  	<script src="https://cryptorank.io/widget/marquee.js"></script>
+ </div>
+	{% include 'nav.html' %}
+	
+
+	<div class="container">
+		<div class="row g-0">
+			<div class="col">
+				<h3 class="fw-bold m-0 text-center"><a class="text-decoration-none text-black" href="">Личный аккаунт<span class="text-danger"></span></a></h3>
+			</div>
+		</div>
+		{% block edit %}
+ {% endblock %}
+		<div class="row g-0">
+			<div class="col-lg-2">
+				<p class="text-center pt-3 fw-bold">Меню</p>
+				<ul class="list-unstyled p-3 bg-dark rounded-3">
+					<!-- <li class="text-center"><p class="text-danger fw-bold m-0">Меню</p></li> -->
+					<li class="border-bottom pb-2"><a class="btn btn-link w-100 text-start border text-decoration-none text-white fw-bold" href="{% url 'account' %}">Профиль</a></li>
+					<li class="border-bottom py-2"><a class="btn btn-link w-100 text-start border text-decoration-none text-white fw-bold" href="##">Корзина</a></li>
+					<li class="pt-2"><a class="btn btn-link w-100 text-start border text-decoration-none text-white fw-bold" href="#">Мои заказы</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-10">
+				<div class="row g-0 p-3 align-items-center">
+					<div class="col-md-4 text-center bg-dark p-5 rounded">
+						{% if profile and profile.photo %}
+						<img class="img-fluid" src="{{ profile.photo.url }}" height="200" alt="">
+						{% else %}
+      <p>Фото отсутствует</p>
+       {% endif %}
+					</div>
+					<div class="" id="myModal" style="width: 800px; height: 800px; border:1px solid black; display: none;"></div>
+					<div class="col-md-8 p-3">
+						<p class="fw-bold">Личная ифнормация</p>
+						<ul class="list-unstyled">
+							<li>Логин: &nbsp;&nbsp;<span class="text-danger fw-bold">{{ user.username }}</span></li>
+							<li>Имя: &nbsp;&nbsp;<span class="text-danger fw-bold">{{ user.first_name }}</span></li>
+							<li>Фамилия: &nbsp;&nbsp;<span class="text-danger fw-bold">{{ user.last_name }}</span></li>
+							<li>Номер телефона: &nbsp;&nbsp;<span class="text-danger fw-bold">{{ user.phone }}</span></li>
+							<li>Адрес проживания: &nbsp;&nbsp;<span class="text-danger fw-bold">{{ user.address }}</span></li>
+							<li>Почта: &nbsp;&nbsp;<span class="text-danger fw-bold">{{ user.email }}</span></li>
+						</ul>
+						<a href="{% url 'edit' %}" id="myInput"><button class="btn btn-outline-dark" type="button">Изменить профиль</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+	
+    
+
+ {% include 'footer.html' %}
+
+ <script src="../media/js/bootstrap.bundle.js"></script>
+	<script src="../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../media/js/slick.min.js"></script>
+	<script src="../media/js/test.js"></script>
+	<script>
+		console.log('123')
+
+		const myModal = document.getElementById('myModal');
+		const myInput = document.getElementById('myInput');
+
+		myModal.addEventListener('shown.bs.modal', (event) => {
+			event.preventDefault();
+			myInput.focus()
+		});
+
+	</script>
+</body>
+</html>

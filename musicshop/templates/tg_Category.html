@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../../media/images/newsicon1.png">
+	<link rel="stylesheet" type="text/css" href="../../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+
+<body class="f-space">
+
+	<div id="cr-widget-marquee"
+  	data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  	data-theme="light"
+  	data-show-symbol="true"
+  	data-show-icon="true"
+  	data-show-period-change="true"
+  	data-period-change="3M"
+  	data-api-url="https://api.cryptorank.io/v0">
+  	<a href="https://cryptorank.io">Coins by Cryptorank</a>
+  	<script src="https://cryptorank.io/widget/marquee.js"></script>
+ 	</div>
+	{% include 'nav.html' %}
+	
+	<div class="container">
+		<div class="row g-0">
+			<span>
+				<a class="text-decoration-none fw-bold" href="{% url 'tg' %}">home</a> &nbsp; / &nbsp; вы сейчас в категории - 
+				<a class="text-decoration-none fw-bold" href="">{{ category_all.title }}</a>
+			</span>
+			<div class="col-md-8 col-sm-12 p-3">
+				<div class="row g-0">
+					{% for cardInCategory in cards_in_category%}
+					<div class="col-6 col-md-3 col-sm-6 p-3">
+						<a class="text-decoration-none text-dark" href="{% url 'tg_card_detail' cardInCategory.slug %}">
+							<img class="img-fluid" src="{{ cardInCategory.logo.url }}" alt="">
+							<p class="fw-bold">{{ cardInCategory.title }}</p>
+							<button class="btn btn-dark" type="button">
+								<a class="d-block text-white text-decoration-none" href="{% url 'tg_card_detail' cardInCategory.slug %}">Читать дальше...</a>
+							</button>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-4 p-3">
+				<div class="mb-3 p-3 bg-dark w-100 rounded-3">
+					<h3 class="fw-bold my-3 text-white">Категории</h3>
+					<ul class="list-unstyled">
+						{% for oth_category in other_category %}
+						<li class="pb-2 border-bottom w-75"><a class="btn w-100 border text-start text-white fw-bold text-decoration-none" href="{% url 'tg_category' oth_category.slug %}">{{ oth_category.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="mb-3 p-3 bg-dark rounded-3">
+					<h3 class="fw-bold my-3 text-white">Популярные игры</h3>
+					<ul class="list-unstyled">
+						{% for card_in_category in cards_in_category%}
+						<li><a class="fw-bold text-decoration-none link-light" href="">{{ card_in_category.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	{% include 'footer.html' %}
+
+ 	<script src="../media/js/bootstrap.bundle.js"></script>
+	<script src="../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../media/js/slick.min.js"></script>
+	<script src="../media/js/test.js"></script>
+	<script>
+		console.log('123')
+
+	</script>
+</body>
+</html>

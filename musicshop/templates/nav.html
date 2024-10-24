@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-lg">
+    <a class="fw-bold text-primary p-0 navbar-brand" href="{% url 'base' %}">Glazovskiy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Переключатель навигации">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
+        <li class="nav-item">
+          <a class="nav-link active custom-link mx-2" aria-current="page" href="{% url 'news_list' %}">Новости</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active custom-link mx-2" aria-current="page" href="{% url 'shop' %}">Магазин</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active custom-link mx-2" aria-current="page" href="{% url 'tg' %}">Телеграмм (темки)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active custom-link mx-2" href="{% url 'Books_list' %}">Бибилиотека</a>
+        </li>
+        {% if request.user.is_authenticated %}
+          <form class="ms-lg-auto d-flex align-items-center" action="{% url 'logout' %}?next={% url 'base' %}" method="post">
+            {% csrf_token %}
+            <li class="nav-item ms-lg-auto">
+              <a class="text-decoration-none text-danger" href="{% url 'account' %}"><i class="fa-regular fa-user"></i> Профиль</a>
+              <button class="border-0 bg-white"> /Выйти</button>
+            </li>
+          </form>
+        {% else %}
+        <li class="nav-item ms-lg-auto">
+          <a class="nav-link active custom-link mx-2" href="{% url 'login' %}"><i class="fa-regular fa-user"></i> Аккаунт /login</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

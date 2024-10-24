@@ -1,0 +1,238 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <title>Glazovskiy</title>
+ <link rel="shortcut icon" href="/../media/images/newsicon1.png">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="/../media/css/bootstrap.css">
+ <link rel="stylesheet" type="text/css" href="/../media/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/../media/css/slick.css"/>
+ <link rel="stylesheet" type="text/css" href="/../media/css/slick-theme.css"/>
+</head>
+<body class="f-space">
+ <div class="position-sticky top-0" id="cr-widget-marquee"
+  data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  data-theme="light"
+  data-show-symbol="true"
+  data-show-icon="true"
+  data-show-period-change="true"
+  data-period-change="3M"
+  data-api-url="https://api.cryptorank.io/v0">
+  <a href="https://cryptorank.io">Coins by Cryptorank</a>
+  <script src="https://cryptorank.io/widget/marquee.js"></script>
+ </div>
+
+ {% include 'nav.html' %}
+ <div class="container-sm">
+  <div class="row g-0 align-items-center ">
+   <div class="col-lg-10 col-7 mt-3">
+     <p class="mb-0 text-primary fw-bold">Glazovskiy<span class="fw-bold text-danger">.News</span></p>
+    </div>
+  </div>
+ </div>
+
+ <div class="container-lg">
+
+  <div class="row g-0">
+   <div class="time py-2">
+    <span class="p-3" style="font-size: 14px;">
+     <a class="fw-bold text-decoration-none" href="{% url 'news_list' %}">home</a> /
+     <a class="text-decoration-none fw-bold text-secondary" href=""></a>
+     &nbsp;<a class="text-decoration-none text-success" href="{% url 'category_for_posts' post_detail.category.slug %}">{{ post_detail.category.name }}</a>
+     &nbsp;<a class="text-decoration-none text-secondary" href="">{{ post_detail.published|timesince }} назад</a>
+     <i class="ms-3 fa-regular fa-eye"></i>
+     <span>{{ post_detail.views }}</span>
+    </span>
+   </div>
+  </div>
+
+   <div class="row g-0">
+    <div class="col-md-8">
+     <h1 class="fw-bold my-2" style="font-size: 46px;">{{ post_detail.title }}</h1>
+     <p class="mb-3 title-last-card-info m-0 text-secondary">
+      <i class="fa-regular fa-clock text-dark" style="font-size: 23px;"></i>
+      <span class="text-secondary" style="font-size: 23px;"> 2 mins</span> &nbsp;
+     </p>
+
+     <div class="row g-0">
+      <h5 class="fw-bold mb-3 text-primary">СОДЕРЖАНИЕ</h5>
+      <div class="col">
+       <div class="mb-3">
+        <ul class="list-unstyled sodLink fw-bold" style="border-left: 7px solid mediumslateblue;">
+         <li class="border-bottom mx-4 py-2"><span>{{ post_detail.content_1 }}</span></li>
+         <li class="border-bottom mx-4 py-2"><span>{{ post_detail.content_2 }}</span></li>
+         <li class="border-bottom mx-4 py-2"><span>{{ post_detail.content_3 }}</span></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+
+     <div class="row g-0">
+      <div class="col">
+       <div class="p-3">
+         <img class="rounded mb-3 mx-md-auto mx-lg-0 img-fluid" src="{{ post_detail.post_img.url }}" alt="">
+         <p class="fw-bold text-dark" style="font-size: 21px;">{{ post_detail.text }}</p>
+         <p class="my-4" style="font-size: 21px;">{{ post_detail.dop_text }}</p>
+         <div class="my-5">
+          <h2 class="fw-bold">{{ post_detail.title_text_1 }}</h2>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_1_1 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_1_2 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_1_3 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_1_4 }}</p>
+         {% if post_detail.img_for_content_1 %}
+          <img class="img-fluid" src="{{ post_detail.img_for_content_1.url }}" alt="">
+          <p class="" style="font-size: 12px;">Дневной анализ цены Mother Iggy. Источник: <a href="" style="font-size: 12px;">TradingView</a></p>
+         {% else %}
+          <p></p>
+         {% endif %}
+         <p class="my-4" style="font-size: 21px;">{{ post_detail.text_1_4 }}</p>
+        </div>
+        <div class="my-5">
+          <h2 class="fw-bold">{{ post_detail.title_text_2 }}</h2>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_2_1 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_2_2 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_2_3 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_2_4 }}</p>
+         {% if post_detail.img_for_content_2 %}
+          <img class="img-fluid" src="{{ post_detail.img_for_content_2.url }}" alt="">
+          <p class="" style="font-size: 12px;">Дневной анализ цены Mother Iggy. Источник: <a href="" style="font-size: 12px;">TradingView</a></p>
+         {% else %}
+          <p></p>
+         {% endif %}
+         <p class="my-4" style="font-size: 21px;">{{ post_detail.text_2_4 }}</p>
+        </div>
+        <div class="my-5">
+          <h2 class="fw-bold">{{ post_detail.title_text_3 }}</h2>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_3_1 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_3_2 }}</p>
+          <p class="my-4" style="font-size: 21px;">{{ post_detail.text_3_3 }}</p>
+         {% if post_detail.img_for_content_3 %}
+          <img class="img-fluid" src="{{ post_detail.img_for_content_3.url }}" alt="">
+          <p class="" style="font-size: 12px;">Дневной анализ цены Mother Iggy. Источник: <a href="" style="font-size: 12px;">TradingView</a></p>
+         {% else %}
+          <p></p>
+         {% endif %}
+         <p class="my-4" style="font-size: 21px;">{{ post_detail.text_3_4 }}</p>
+        </div>
+        <p class="my-4"></p>
+       </div>
+      </div>
+     </div>
+
+     <div class="row g-0 bg-dark text-white rounded-3 p-3">
+     <div class="col p-3">
+      <h3 class="fw-bold">Комментарии <span>({{ comments_count }})</span></h3>
+      <div class="text-body w-100">
+       {% for com in comments %}
+       <div class="card-body p-4 border-bottom border-light">
+        <div class="d-flex flex-start">
+          <img class="rounded-circle shadow-1-strong me-3" src="{{ com.user.profile.photo.url }}" alt="avatar" width="60" height="60">
+          <div>
+           <h6 class="fw-bold mb-1 text-danger">{{ com.user }}</h6>
+           <div class="d-flex align-items-center mb-3">
+             <p class="text-white mb-0">{{ com.created_date }}</p>
+           </div>
+           <p class="mb-0 text-white">{{ com.text }}</p>
+         </div>
+        </div>
+       </div>
+       {% endfor %}
+     </div>
+     </div>
+    {% if user.is_authenticated %}
+    <div class="row g-0">
+     <div class="group-input">
+     <form method="post" action="">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="btn btn-outline-light w-100" type="submit">Отправить</button>
+     </form>
+     {% else %}
+     <p class="fw-bold text-dark" style="margin-top: 25px;">Вы должны  <a class="text-danger text-decoration-none" href="{% url 'login' %}">ВОЙТИ</a> чтобы оставлять комментарии.</p>
+     {% endif %}
+     </div>
+    </div>
+    </div>
+
+
+    <div class="row g-0">
+     <div class="col my-4">
+      <h5 class="fw-bold p-3"><strong>Читайте также</strong></h5>
+      <div class="row g-0 rounded align-items-center p-3 bg-dark rounded-3">
+       {% for rel_main_posts in related_posts_main %}
+       <div class="col-xl p-2">
+        <div class="row g-0 justufy-content-center align-items-center">
+         <a class="text-decoration-none m-0 p-0 d-flex align-items-center" href="{% url 'post_detail' rel_main_posts.slug %}">
+          <div class="col text-center">
+           <img class="img-fluid" src="{{ rel_main_posts.post_img.url }}" alt="" width="130">
+          </div>
+          <div class="col">
+           <p class="m-0 p-3 text-warning" style="font-size:15px;">{{ rel_main_posts.title }}</p>
+          </div>
+         </a>
+        </div>
+        {% endfor %}
+       </div>
+       <div class="col">
+        <ul class="list-instyled list-group border-start border-light rounded-0">
+         {% for rel_post in random_related_posts %}
+         <li class="list-group-item border-0 border-bottom mx-3 bg-dark">
+          <a class="text-decoration-none text-warning" href="" style="font-size:13px;">{{ rel_post.title }}</a>
+         </li>
+         {% endfor %}
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+
+   </div>
+   <div class="col-md-3 col-lg-3 mx-auto">
+    <h3 class="fw-bold p-3">Популярное</h3>
+    <div class="lenta rounded bg-black overflow-auto m-1 mb-3" style="height:600px;">
+     <div class="row g-0">
+      <div class="col">
+      {% for popular_post in popular_posts %}
+       <a class="row justify-content-center align-items-center p-3 mb-2 text-white text-decoration-none" href="{% url 'post_detail' popular_post.slug %}">
+        <span class="col-8">{{ popular_post.title }}</span>
+        <div class="col text-center">
+         <img class="p-2 img-fluid" src="{{ popular_post.post_img.url }}" alt="" width="120" height="60">
+        </div>
+       </a>
+       {% endfor %}
+      </div>
+     </div>
+    </div>
+    <div class="bg-dark p-3 rounded-3">
+     <p class="text-white fw-bold">Еще новости</p>
+     <ul class="list-unstyled">
+      {% for popular_post in popular_posts %}
+      <li class="mb-3"><a class="text-decoration-none text-warning" href="{% url 'post_detail' popular_post.slug %}">{{ popular_post.title }}</a></li>
+      {% endfor %}
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+ </div>
+
+
+  {% include 'footer.html' %}
+
+  <script src="/../media/js/bootstrap.bundle.js"></script>
+  <script src="/../media/js/jquery-3.7.1.min.js"></script>
+  <script src="/../media/js/slick.min.js"></script>
+  <script src="/../media/js/test.js"></script>
+  <script>
+    console.log('123')
+
+  </script>
+</body>
+</html>

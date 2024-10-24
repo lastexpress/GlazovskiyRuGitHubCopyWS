@@ -1,0 +1,300 @@
+.*{
+	padding:0px;
+	margin:0px;
+	box-sizing:border-box;
+}
+
+body{
+	background-color: #f5f7fa;
+}
+
+.f-space{
+ font-family: "Space Grotesk", sans-serif;
+ font-optical-sizing: auto;
+ font-weight: 400; /* Или другое значение от 300 до 700 */
+ font-style: normal;
+}
+
+#play-button.clicked {
+  transform: scale(0.9) !important; /* Уменьшение размера кнопки при клике */
+}
+
+
+.shop-baner-promo{
+	background-image: url("../media/images/adidasback.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.card-new{
+	background-image: url("../media/images/aezdv.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 600px;
+}
+
+.card-tg-themes{
+	background-image: url("../img/shibdogepepe.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 600px;
+}
+
+.card-glz-shop{
+	background-image: url("../media/images/adidasback.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 600px;
+}
+
+.card-glz-book{
+	background-image: url("../media/images/book.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 600px;
+}
+
+#prog-Books, #crypto-Books{
+	display: none;
+}
+
+.custom-link {
+ text-decoration: none; /* Убираем стандартное подчеркивание */
+ position: relative; /* Для позиционирования псевдоэлемента */
+}
+
+.custom-link::after {
+	content: ''; /* Создаем пустой элемент */
+	display: block; /* Делаем его блочным */
+	width: 80%; /* Ширина равна ширине ссылки */
+	height: 4px; /* Высота черты */
+	background-color: #c9fd35; /* Цвет черты */
+	position: absolute; /* Абсолютное позиционирование */
+	left: 5; /* Сдвиг влево */
+	bottom: 10px;
+	transform: scaleX(0); /* Изначально черта скрыта */
+	transition: transform 0.3s ease; /* Плавный переход */
+	transform-origin: left; /* Начало анимации слева */
+}
+
+.custom-link:hover::after {
+	transform: scaleX(1); /* При наведении показываем черту */
+}
+
+.navbar-toggler {
+ display: none;
+}
+
+.main-container{
+	display:flex;
+}
+
+.main-container-content{
+	border:1px solid white;
+	height:220px;
+	max-width:220px;
+	border-radius: 10px;
+}
+
+.icon-number-two::before{
+	content:"";
+	display: inline-block;
+	background-image: url("../img/icons/BD18223_.png");
+	background-repeat: no-repeat;
+	background-size: 4rem 4rem;
+	width: 4rem;
+	height: 4rem;
+	vertical-align: bottom;
+}
+
+/* Изменение цвета placeholder для полей ввода */
+.bg-secondary::placeholder {
+  color: #ccc; /* Задайте желаемый цвет */
+}
+
+.img-xbox{
+	background-image: url("../img/graf.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.img-playstation{
+	background-image: url("../img/graf2.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-repeat: no-repeat;
+}
+
+.sodLink{
+	position: relative;
+}
+
+.sodLink::after{
+	position: absolute;
+	content: "";
+	width: 9px;
+	height: 100%;
+	top: 0;
+}
+
+.inviteLink{
+	position: relative;
+}
+
+.inviteLink::after{
+	position: absolute;
+	content: "";
+	width: 9px;
+	height: 100%;
+	left: -22px;
+	top: 0;
+	border-left: 3px solid #de46d6;
+	background: #fff;
+	-webkit-box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.5);
+	box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.5);
+}
+
+.title-last-card{
+	bottom: 0; 
+	left: 0; 
+	background-color: #C9FD35; 
+	color: white; 
+	padding: 10px; 
+	box-shadow: 8px 5px 1px black;
+}
+
+.title-last-card-info{
+	font-size: 13px;
+}
+
+@media (max-width: 567.98px){
+	.navigation{
+		width:100% !important;
+	}
+	.introduction{
+		width:100% !important;
+	}
+	.latest-project{
+		width:100% !important;
+	}
+	.latest-project-block{
+		margin:0px;
+		padding:10px !important;
+	}
+	.main-screen{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.latest-episodes-card{
+		display: flex;
+		flex-wrap: wrap;
+		width:100%;
+	}
+	.info-people{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	/*.sub-form{
+		width:75% !important;
+	}*/
+	.text-hello{
+		font-size: 48px !important;
+		padding: 50px 0px;
+	}
+	.ratings{
+		width: 100%;
+	}
+	.hallo-dashboard-desc-title{
+		font-size: 32px !important;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.navigation{
+		display:block !important;
+		width:100% !important;
+	}
+	.navigation ul{
+		display:block !important;
+		margin-top:15px !important;
+	}
+	.navigation ul li{
+		display:inline-block !important;
+		margin-top:13px;
+	}
+	.introduction{
+		width:100% !important;
+	}
+	.latest-project{
+		width:100% !important;
+	}
+	.latest-project-block{
+		margin:0px;
+		padding:10px !important;
+	}
+	.main-screen{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.latest-episodes-card{
+		display: flex;
+		flex-wrap: wrap;
+
+	}
+	.info-people{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.sub-form{
+		width:75% !important;
+	}
+	.card-new{
+		background-size: contain !important;
+		height: 280px !important;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.navigation{
+		display:block !important;
+	}
+	.navigation ul{
+		display:block !important;
+		margin-top:15px !important;
+	}
+	.navigation ul li{
+		display:inline-block !important;
+		margin-top:13px;
+	}
+	.latest-project{
+		width:100% !important;
+	}
+	.latest-project-block{
+		margin:0px;
+		padding:30px !important;
+	}
+	.main-screen{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.latest-episodes-card{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.sub-form{
+		width:75% !important;
+	}
+	.navbar-toggler {
+	 display: block;
+	}
+	.collapse {
+	 display: none !important; /* Скрыть меню по умолчанию */
+	}
+	.collapse.show {
+	 display: block !important; /* Показать при открытии */
+	}
+}

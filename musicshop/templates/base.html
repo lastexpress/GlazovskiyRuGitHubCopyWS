@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Glazovskiy</title>
+	<link rel="shortcut icon" href="../media/images/newsicon1.png">
+	<link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../media/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../media/css/slick-theme.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+</head>
+
+<body class="f-space">
+	<div id="cr-widget-marquee"
+  	data-coins="bitcoin,ethereum,ripple,toncoin,tron,cardano,uniswap,solana,bnb,chainlink"
+  	data-theme="light"
+  	data-show-symbol="true"
+  	data-show-icon="true"
+  	data-show-period-change="true"
+  	data-period-change="3M"
+  	data-api-url="https://api.cryptorank.io/v0">
+  	<a href="https://cryptorank.io">Coins by Cryptorank</a>
+  	<script src="https://cryptorank.io/widget/marquee.js"></script>
+ </div>
+	{% include 'nav.html' %}
+	
+<div class="row g-0 mb-3">
+		<div class="card-news col position-relative" 
+			style="background-image: url('./media/images/aezdv.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 600px;">
+			<div class="row g-0">
+				<div class="bg-dark">
+					<h3 class="mt-3 text-center text-white fw-bold">GLAZOVSKIY<span class="text-danger">.NEWS</span></h3>
+					<p class="text-white fw-bold text-center ">Все в мире криптовалюты и другие</p>	
+				</div>
+			</div>
+			<div class="row g-0 position-absolute bottom-0 center-0 w-100">
+				<div class="bg-dark w-100 text-center p-2">
+					<span><a class="btn btn-outline-light" href="{% url 'news_list' %}">Перейти к новостям</a> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row g-0 mb-3">
+		<div class="card-tg-themes col position-relative"
+			style="background-image: url('../media/images/shibdogepepe.png'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 600px;">
+			<div class="row g-0">
+				<div class="bg-dark">
+					<h3 class="mt-3 text-center text-white fw-bold">GLAZOVSKIY<span class="text-danger"><br>.Телеграм темки</span></h3>
+					<p class="text-white fw-bold text-center ">Перспективные монеты и даже <span class="text-info fw-bold text-decoration-underline">GEMS</span></p>
+				</div>
+			</div>
+			<div class="row g-0 position-absolute bottom-0 center-0 w-100">
+				<div class="bg-dark w-100 text-center p-2">
+					<span><a class="btn btn-outline-light" href="{% url 'tg' %}">Перейти к Темкам на телеграм</a> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row g-0 mb-3">
+		<div class="card-tg-themes col position-relative"
+			style="background-image: url('../media/images/adidasback.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 600px;">
+			<div class="row g-0">
+				<div class="bg-dark">
+					<h3 class="mt-3 text-center text-white fw-bold">GLAZOVSKIY<span class="text-danger">.SHOP</span></h3>
+					<p class="text-white fw-bold text-center ">Бутик с редкими вещами</p>	
+				</div>
+			</div>
+			<div class="row g-0 position-absolute bottom-0 center-0 w-100">
+				<div class="bg-dark w-100 text-center p-2">
+					<span><a class="btn btn-outline-light" href="{% url 'shop' %}">Перейти в <span class="text-info fw-bold">магазин</span></a> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row g-0 mb-3">
+		<div class="card-tg-themes col position-relative"
+			style="background-image: url('../media/images/book.jpeg'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 600px;">
+			<div class="row g-0">
+				<div class="bg-dark">
+					<h3 class="mt-3 text-center text-white fw-bold">GLAZOVSKIY<span class="text-danger">.BOOK</span></h3>
+					<p class="text-white fw-bold text-center ">Бутик с редкими книжками</p>	
+				</div>
+			</div>
+			<div class="row g-0 position-absolute bottom-0 center-0 w-100">
+				<div class="bg-dark w-100 text-center p-2">
+					<span><a class="btn btn-outline-light" href="{% url 'Books_list' %}">Перейти в <span class="text-info fw-bold">book</span></a> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+
+ {% include 'footer.html' %}
+
+ <script src="../media/js/bootstrap.bundle.js"></script>
+	<script src="../media/js/jquery-3.7.1.min.js"></script>
+	<script src="../media/js/slick.min.js"></script>
+	<script src="../media/js/test.js"></script>
+	<script>
+		console.log('123')
+
+	</script>
+</body>
+</html>

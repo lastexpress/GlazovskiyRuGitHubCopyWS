@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../media/css/index.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+    <link rel="stylesheet" href="../media/css/styleIForindex.css">
+    <link rel="shortcut icon" href="../media/images/free-icon-blog-6114045.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div id="cr-widget-marquee"
+        data-coins="toncoin,bitcoin,notcoin,ethereum,solana,dogecoin,pepe"
+        data-theme="light"
+        data-show-symbol="true"
+        data-show-icon="true"
+        data-show-period-change="true"
+        data-period-change="24H"
+        data-api-url="https://api.cryptorank.io/v0">
+        <a href="https://cryptorank.io">Coins by Cryptorank</a>
+        <script src="https://cryptorank.io/widget/marquee.js"></script>
+    </div>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-45">ЗАЦЕНИ ЧЕ ПРОИСХОДИТ !</h1>
+    </div>
+    
+    <!-- Content -->      
+    <section class="section-wrap main-content">
+      <div class="container">
+        <div class="row">
+
+          <!-- Posts -->
+          <div class="col-lg-8 blog__content mb-30">
+
+            <div class="features-blog-post">
+                <div class="features-blog-post-img">
+                    <img src="{{ latest_post.post_img.url }}" alt="">
+                    <h1 class="features-blog-post-titles">
+                        <a href="{% url 'post_detail' latest_post.slug %}">{{ latest_post.title|truncatewords:10 }}</a>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Hot News -->
+            <section class="section">
+              <h3 class="blog-list-hot-news-title">Пироги (горячие)</h3>
+              <div class="row">
+                {% for hot_poster in hot_post %}
+                <div class="col-md-6">
+                  <article class="entry">
+                    <a href="{% url 'category_for_posts' hot_poster.category.slug %}" class="entry__meta-category">{{ hot_poster.category }}</a>
+                    <div class="blog-list-hot-news-img">
+                        <a href="{% url 'post_detail' hot_poster.slug %}" class="blog-list-hot-news-img-link">
+                            <img src="{{ hot_poster.post_img.url }}" alt="">
+                        </a>
+                    </div>
+
+                    <div class="blog-list-hot-news-text">
+                        <h2 class="blog-list-hot-news-text-title">
+                            <a href="{% url 'post_detail' hot_poster.slug %}" class="blog-list-hot-news-text-title-link">{{ hot_poster.title|truncatewords:10 }}</a>
+                        </h2>
+                    </div>
+                  </article>
+                </div>
+                {% endfor %}
+              </div> 
+            </section> <!-- end hot news -->
+
+            <!-- Recent News -->
+            <section class="section">
+              <h3 class="section-title h2">Свежак</h3>
+              <div class="row">
+                {% for rec_post in recent_post %}
+                <div class="col-md-6">
+                  <article class="entry">
+                    <a href="{% url 'category_for_posts' rec_post.category.slug %}" class="entry__meta-category">{{ rec_post.category }}</a>
+                    <div class="blog-list-hot-news-img">
+                        <a href="{% url 'post_detail' rec_post.slug %}" class="blog-list-hot-news-img-link">
+                            {% if rec_post.post_img %}
+                            <img src="{{ rec_post.post_img.url }}" alt="">
+                            {% else %}
+                            <img src="/path/to/default/image.jpg" alt="No image available">
+                            {% endif %}
+                        </a>
+                    </div>
+
+                    <div class="blog-list-hot-news-text">
+                        <h2 class="blog-list-hot-news-text-title">
+                            <a href="{% url 'post_detail' rec_post.slug %}" class="blog-list-hot-news-text-title-link">{{ rec_post.title|truncatewords:10 }}</a>
+                        </h2>
+                    </div>
+                  </article>
+                </div>
+                {% endfor %}
+              </div> 
+            </section> <!-- end recent news -->
+            {% if recent_post.paginator.num_pages > 1 %}
+            <div class="pagination">
+                <div class="pagination-container" style="display: flex; align-items: center; justify-content: center;">
+                    <form method="get" style="margin: 0;">
+                    {% if recent_post.has_previous %}
+                        <button type="submit" name="page" value="{{ recent_post.previous_page_number }}" class="games-next-btn"><<</button>
+                    {% else %}
+                        <button type="button" class="games-next-btn" disabled><<</button>
+                    {% endif %}
+
+                    <span class="current" style="margin: 0 10px; color: #333;">
+                        Страница {{ recent_post.number }} из {{ recent_post.paginator.num_pages }}.
+                    </span>
+                    {% if recent_post.has_next %}
+                        <button type="submit" name="page" value="{{ recent_post.next_page_number }}" class="games-second-btn">>></button>
+                    {% else %}
+                        <button  type="button" class="games-second-btn" disabled>>></button>
+                    {% endif %}
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+          </div> <!-- end posts -->
+
+          <!-- Sidebar -->
+          <aside class="col-lg-4 sidebar sidebar--right">
+
+            <!-- Widget Crypto Rates -->
+            <div class="widget widget-crypto-rates">
+            <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="1" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+            <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="1027" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+            <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="5426" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+            <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="11419" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+            <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="28850" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+            </div>
+
+            <!-- Widget Featured ICO's -->
+            <!-- <div class="widget widget-featured-icos" style="margin-top: 35px;">
+              <h4 class="widget-title">Featured ICO's</h4>
+              <ul class="widget-featured-icos__list">
+                <li class="widget-featured-icos__item">
+                  <a href="#" class="widget-featured-icos__url">
+                    <img src="img/blog/ico_1.png" alt="">
+                    <span class="widget-featured-icos__title">ClearCoin</span>
+                    <span class="widget-featured-icos__launch">Starts in:</span>
+                    <span class="widget-featured-icos__time">66 days</span>
+                  </a>
+                </li>
+                <li class="widget-featured-icos__item">
+                  <a href="#" class="widget-featured-icos__url">
+                    <img src="img/blog/ico_2.png" alt="">
+                    <span class="widget-featured-icos__title">Monetha</span>
+                    <span class="widget-featured-icos__launch">Starts in:</span>
+                    <span class="widget-featured-icos__time">12 days</span>
+                  </a>
+                </li>
+                <li class="widget-featured-icos__item">
+                  <a href="#" class="widget-featured-icos__url">
+                    <img src="img/blog/ico_3.png" alt="">
+                    <span class="widget-featured-icos__title">HelloGold</span>
+                    <span class="widget-featured-icos__launch">Starts in:</span>
+                    <span class="widget-featured-icos__time">3 days</span>
+                  </a>
+                </li>
+              </ul>
+            </div>  --><!-- end widget featured icos -->
+
+            
+            <div class="widget widget-popular-posts">
+              <h4 class="widget-title">Категории</h4>
+                <ul style="list-style-type: none;">
+                <li class="widget-popular-posts__item">
+                  <a class="entry__meta-category" href="{% url 'blog_list' %}">Главная</a>
+                </li>
+                {% for cat in category %}
+                <li class="widget-popular-posts__item">
+                  <a class="entry__meta-category" href="{% url 'category_for_posts' cat.slug %}">{{ cat.name }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div> <!-- end widget popular posts -->
+
+            
+
+            <!-- Widget Popular Posts -->
+            <div class="widget widget-popular-posts">
+              <h4 class="widget-title">ЭТИ ПОСТЫ НАБРАЛИ КУЧА ПРОСМОТРОВ</h4>
+
+              <ul class="widget-popular-posts__list">
+                {% for pop_post in popular_posts %}
+                <li class="widget-popular-posts__item">
+                  <article>
+                    <div class="widget-popular-posts__entry">
+                      <a href="{% url 'category_for_posts' pop_post.category.slug %}" class="entry__meta-category">{{ pop_post.category.name }}</a>
+                      <h3 class="widget-popular-posts__entry-title">
+                        <a href="{% url 'post_detail' pop_post.slug %}">{{ pop_post.title|truncatewords:10 }}</a>
+                      </h3>
+                    </div>
+                  </article>
+                </li>
+                {% endfor %}
+              </ul>
+            </div> <!-- end widget popular posts -->
+          </aside> <!-- end sidebar -->
+
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+    </section> <!-- end content -->
+
+
+    <!-- <div class="container">
+        <div class="card-deck mb-3 text-center" style="display: flex;justify-content: space-evenly;">
+            {% for post in posts %}
+            <div class="card mb-4 box-shadow">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ post.title }}</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><small class="text-muted">{{ post.published }}</small></h1>
+                <p class="card-text">{{ post.text|truncatewords:15 }}</p>
+                <a href="{% url 'post_detail' slug=post.slug %}"><button type="button" class="btn btn-lg btn-block btn-outline-primary">Читать дальше</button></a>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div> 
+        <div class="card-deck mb-3 text-center" style="display: flex;justify-content: space-evenly;">
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <div class="pagination-container" style="display: flex; align-items: center; justify-content: center;">
+                <form method="get" style="margin: 0;">
+                {% if posts.has_previous %}
+                    <button type="submit" name="page" value="{{ posts.previous_page_number }}" class="games-next-btn"><<</button>
+                {% else %}
+                    <button type="button" class="games-next-btn" disabled><<</button>
+                {% endif %}
+
+                <span class="current" style="margin: 0 10px; color: #333;">
+                    Страница {{ posts.number }} из {{ posts.paginator.num_pages }}.
+                </span>
+                {% if posts.has_next %}
+                    <button type="submit" name="page" value="{{ posts.next_page_number }}" class="games-second-btn">>></button>
+                {% else %}
+                    <button  type="button" class="games-second-btn" disabled>>></button>
+                {% endif %}
+                </form>
+            </div>
+        </div>
+    </div> -->
+
+
+    {% include 'footer.html' %}
+
+    <script src="../media/js/func.js"></script> 
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,97 @@
+<!-- <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="block-7">
+              <h3 class="footer-heading mb-4">Пару слов</h3>
+              <p>
+                «В любой ошибке почти всегда есть что-то от Бога. Так что не спеши поскорей её исправить. Напротив, постарайся постигнуть её разумом, докопаться до самой сути. И тебе откроется её сокровенный смысл».
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">Ссылки</h3>
+            <ul class="list-unstyled">
+              <li><a href="{% url 'base' %}">Главная</a></li>
+              <li><a href="{% url 'tg' %}">Телеграм (Темки)</a></li>
+              <li><a href="{% url 'shop' %}">Магазин</a></li>
+              <li><a href="{% url 'news_list' %}">Новости</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Контактная информация</h3>
+              <ul class="list-unstyled">
+                <li>Удмуртская республика. г.Глазов</li>
+                <li>Индекс почты города: 427620</li>
+                <li>Почта: будет добавлена позднее</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              Все права &copy;
+              <script>document.write(new Date().getFullYear());</script>
+              защищены
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+
+<footer class="mt-3">
+  <div class="container rounded bg-white">
+    <div class="row g-0 p-3">
+      <div class="col">
+        <h3 class="fw-bold m-3">GLAZOVSKIY</h3>
+        <div class="row g-0 align-items-center">
+          <!-- <div class="col-md-5 p-3">
+            <h1 class="fw-bold">Подпишитесь на нашу рассылку</h1>
+            <div>
+              <div class="input-group">
+                <input class="border-dark rounded me-2 btn text-start" type="email" name="email" placeholder="Ваш Email">
+                <button class="btn text-light bg-primary">Подписаться</button>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-lg ms-md-3 p-3">
+            <div class="row g-0 text-start justify-content-between">
+              <div class="col-md-4 col-6 mb-3">
+                <p class="mb-1 fw-bold text-secondary">Компания</p>
+                <ul class="list-unstyled">
+                  <li><a class="fw-bold text-decoration-none" href="">О нас</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 col-6 mb-3">
+                <p class="mb-1 fw-bold text-secondary">Ссылки</p>
+                <ul class="list-unstyled">
+                  <li><a class="text-decoration-none fw-bold" href="{% url 'news_list' %}">Новости</a></li>
+                  <li><a class="text-decoration-none fw-bold" href="{% url 'tg' %}">Телеграм темки</a></li>
+                  <li><a class="text-decoration-none fw-bold" href="{% url 'shop' %}">Магазин</a></li>
+                  <li><a class="text-decoration-none fw-bold" href="{% url 'Books_list' %}">Библиотека</a></li>
+                </ul>
+              </div>
+              <div class="col mb-3">
+                <p class="mb-1 fw-bold text-secondary">Контакты</p>
+                <ul class="list-unstyled">
+                  <li><i class="fa-solid fa-house"></i><span class="ms-3 fw-bold">Удмуртская республика. г.Глазов</span></li>
+                  <li><i class="fa-solid fa-map-location-dot"></i><span class="ms-3 fw-bold text-primary">Индекс города: <span class="text-danger">427620</span></span></li>
+                  <li><i class="fa-solid fa-envelope"></i><span class="ms-3 fw-bold text-primary">Почта: <span class="text-danger">mama_ama2@mail.ru</span></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container p-3">
+    <div class="row g-0">
+      <div class="col m-0">
+        <p class="fw-bold m-0 text-primary">© 2024 Glazovskiy<span class="text-danger">.project</span></p>
+      </div>
+    </div>
+  </div>
+</footer>
